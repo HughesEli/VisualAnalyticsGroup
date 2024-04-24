@@ -31,7 +31,11 @@ function createBarChart(width, height) {
             .attr("y", d => yScale(d.count))
             .attr("width", xScale.bandwidth())
             .attr("height", d => size.height - size.margin.bottom - yScale(d.count))
-            .attr("fill", "steelblue");
+			.attr("fill", "steelblue")
+			// PROF'S LINE OF CODE BELOW
+			.on('mouseover', function (e, d) { 
+				
+			});
 
         svg.append("g")
             .attr("transform", `translate(0, ${size.height - size.margin.bottom})`)
