@@ -8,12 +8,10 @@ function createTreeMap(width, height) {
     const svg = d3.select('#treemap-svg');
 
     d3.csv("injuries_2010-2020.csv").then(function(data) {
-        // Group data by team
         const nestedData = d3.nest()
             .key(d => d.Team)
             .entries(data);
 
-        // Convert data to hierarchical structure
         const root = {
             name: "NBA Injuries",
             children: nestedData.map(d => ({
@@ -27,19 +25,18 @@ function createTreeMap(width, height) {
             }))
         };
 
-        // Create treemap layout
         const treemap = d3.treemap()
             .size([size.width, size.height])
             .padding(1)
             .round(true);
 
-        // Generate treemap nodes
+
         const treemapData = treemap(d3.hierarchy(root).sum(d => d.children.length));
 
-        // Create color scale
+    
         const color = d3.scaleOrdinal(d3.schemeCategory10);
 
-        // Draw rectangles for each node
+        
         const cells = svg.selectAll("g")
             .data(treemapData.leaves())
             .enter().append("g")
@@ -51,7 +48,6 @@ function createTreeMap(width, height) {
             .attr("fill", d => color(d.parent.data.name))
             .attr("stroke", "white");
 
-        // Add text labels
         cells.append("text")
             .attr("x", 5)
             .attr("y", 15)
@@ -59,7 +55,6 @@ function createTreeMap(width, height) {
             .attr("fill", "black")
             .text(d => d.data.relinquished);
 
-        // Add title
         svg.append("text")
             .attr("x", (size.width / 2))
             .attr("y", size.margin)
