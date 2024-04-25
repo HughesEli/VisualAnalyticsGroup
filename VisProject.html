@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script src="http://cdn.jsdelivr.net/npm/d3@7"></script>
+		<script src="NBA_linegraph.js"></script>
+		<script src="NBA_piechart.js"></script>
+		<script src="NBA_barchart.js"></script>
+		<script src="NBA_treemap.js"></script>
+	</head>
+	<body>
+		<svg id="linegraph-svg" width="100%" height="15%" viewBox="0 0 700 500"></svg>
+		<svg id="barchart-svg" width="100%" height="15%" viewBox="0 0 700 500"></svg>
+		<svg id="piechart-svg" width="100%" height="15%" viewBox="0 0 700 500"></svg>
+		<script>
+			// Function(width, height)
+			createLineGraph(700, 300);
+			createBarChart(700, 300);
+			createPieChart(700, 300);
+			createTreeMap(700, 300);
+		</script>
+	</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,4 +70,4 @@
         </script>
     </body>
     </html>
-    
+     -->
