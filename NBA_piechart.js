@@ -33,15 +33,21 @@ function createPieChart(width, height) {
 
         console.log(categoryCounts); // Check category counts
 
+        /*
         const injuryCounts = d3.group()
             .key(d => d.Relinquished)
             .rollup(v => v.length)
             .entries(data);
 
         console.log(injuryCounts); // Log the aggregated data
+        */
 
+        // set injuryCounts to be based off of categoryCounts
+        const injuryCounts = Object.entries(categoryCounts).map(([category, count]) => ({ category, count }));
+
+        // changed d.value to d.count
         const pie = d3.pie()
-            .value(d => d.value)
+            .value(d => d.count)
             .sort(null);
 
         const arc = d3.arc()
@@ -50,15 +56,17 @@ function createPieChart(width, height) {
 
         const arcs = pie(injuryCounts);
 
+        // changed d.key to d.category
         const colorScale = d3.scaleOrdinal()
-            .domain(injuryCounts.map(d => d.key))
+            .domain(injuryCounts.map(d => d.category))
             .range(d3.schemeCategory10);
 
         svg.selectAll("path")
             .data(arcs)
             .enter().append("path")
             .attr("d", arc)
-            .attr("fill", d => colorScale(d.data.key))
+            // changed d.data.key to d.data.category
+            .attr("fill", d => colorScale(d.data.category))
             .attr("transform", `translate(${size.width / 2}, ${size.height / 2})`);
 
         const labelArc = d3.arc()
