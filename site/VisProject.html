@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Player Injuries</title>
+    <link rel="stylesheet" href="NBA.css">
+    <style>
+        /* Additional styling to clear floats and contain columns */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Adjusting the container width */
+        .container {
+            width: 100%; /* Adjust as needed */
+            max-width: 1200px; /* Adjust as needed */
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+<body>
+    <div class="container clearfix">
+        <div class="left-column">
+            <p>left-column</p>
+            <svg id="linegraph-svg" viewBox="0 0 700 500"></svg>
+            <svg id="barchart-svg" viewBox="0 0 700 500"></svg>
+            <script src="../scripts/NBA_linegraph.js"></script>
+            <script>
+                createLineGraph(700, 300); // Adjust width and height as needed 
+            </script>
+            <script src="../scripts/NBA_barchart.js"></script>
+            <script>
+                createBarChart(700, 250); // Adjust width and height as needed
+            </script>
+        </div>
+        <div class="middle-column">
+            <p>middle-column</p>
+            <svg id="piechart-svg" viewBox="0 0 700 500"></svg>
+            <script src="../scripts/NBA_piechart.js"></script>
+            <script>
+                createPieChart(700, 250); // Adjust width and height as needed
+            </script>
+        </div>
+        <div class="right-column">
+            <p>right-column</p>
+            <p>yehh</p>
+            <svg id="treemap-svg" viewBox="0 0 700 500"></svg>
+            <script src="../scripts/NBA_treemap.js"></script>
+            <script>
+                createTreeMap(700, 250);
+            </script>
+        </div>
+    </div>
+</body>
+</html>
