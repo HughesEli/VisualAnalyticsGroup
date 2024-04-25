@@ -1,5 +1,3 @@
-import * as d3 from 'd3';
-
 function createPieChart(width, height) {
     const size = {
         width: width,
@@ -11,6 +9,29 @@ function createPieChart(width, height) {
 
     d3.csv("injuries_2010-2020.csv").then(function(data) {
         console.log(data); // Log the loaded data to check if it's correct
+
+        const categories = {
+            "ankle": "Ankle Injury",
+            "back": "Back Injury",
+            "knee": "Knee Injury",
+            "strain": "Muscle Strain",
+            "hip": "Hip Injury"
+            // Add more here if needed (these are the 5 the Tableau visualization had)
+        };
+
+        // go through the data and catergorize the injury types
+        const categoryCounts = {};
+        data.forEach(function(d) {
+            for (const keyword in categories) {
+                if (d.Notes.toLowerCase().includes(keyword)) {
+                    const category = categories[keyword];
+                    // the || 0 sets it to 0 if it doesn't exist yet, everything will be NaN otherwise
+                    categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+                }
+            }
+        });
+
+        console.log(categoryCounts); // Check category counts
 
         const injuryCounts = d3.group()
             .key(d => d.Relinquished)
