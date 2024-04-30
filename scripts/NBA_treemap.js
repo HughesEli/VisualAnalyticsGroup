@@ -38,10 +38,10 @@ d3.csv("injuries_2010-2020.csv").then(_data => {
             // Show tooltip on mouseover
             const tooltip = svg.append("text")
                 .attr("class", "tooltip")
-                .attr("x", 55)
+                .attr("x", 5)
                 .attr("y", 10)
-                .attr("text-anchor", "middle")
-                .text(`${d.data.name}: ${d.value}`)
+                .attr("text-anchor", "left")
+                .text(`${d.data.name} - Injury Count: ${d.value}`)
                 .style("font-weight", "bold");
         })
         .on("mouseout", function(event, d) {

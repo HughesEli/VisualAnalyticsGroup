@@ -29,7 +29,9 @@ function createBarChart(width, height) {
         const yScale = d3.scaleLinear()
             .domain([0, d3.max(aggregatedData, d => d.count)])
             .nice()
-            .range([size.height - size.margin.bottom, size.margin.top]);
+			.range([size.height - size.margin.bottom, size.margin.top]);
+		
+		let boolPieChart = false;
 
         // Draw bars
         svg.selectAll("rect")
@@ -40,9 +42,22 @@ function createBarChart(width, height) {
             .attr("width", xScale.bandwidth())
             .attr("height", d => size.height - size.margin.bottom - yScale(d.count))
 			.attr("fill", "steelblue")
-			.on("click", function(event, d) {
-				d3.select(this).attr("fill", "red");
-				
+			.on("click", function (event, d) {
+				if (!boolPieChart)
+				{
+					d3.select(this).attr("fill", "red");
+					removePieChart();
+					// Code a way to send the year to the piechart
+					createPieChart(700, 500, d.year);
+					boolPieChart = true;
+				}
+				else
+				{
+					d3.select(this).attr("fill", "steelblue");
+					removePieChart();
+					createPieChart(700, 500, 0);
+					boolPieChart = false;	
+				}
 			})
             .on("mouseover", function(event, d) {
                 // Show tooltip on mouseover
@@ -57,7 +72,6 @@ function createBarChart(width, height) {
             .on("mouseout", function(event, d) {
                 // Remove tooltip on mouseout
 				svg.select(".tooltip").remove();
-				d3.select(this).attr("fill", "steelblue");
             });
 
         // Draw x-axis

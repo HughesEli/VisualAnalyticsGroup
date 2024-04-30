@@ -97,3 +97,9 @@ function createPieChart(width, height, filterYear) {
         console.error("Error loading data:", error);
     });
 }
+
+// Function to remove the pie chart
+function removePieChart() {
+    // Select the SVG element containing the pie chart and remove it
+    d3.select('#piechart-svg').selectAll("*").remove();
+}
