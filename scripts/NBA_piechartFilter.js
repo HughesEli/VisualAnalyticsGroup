@@ -16,8 +16,8 @@ function createPieChartFilter(width, height, filterYear) {
         console.log(data); // Log the loaded data to check if it's correct
 
         // Filter data based on the provided year
-        if (filterYear) {
-            data = data.filter(d => d.Year === filterYear);
+        if (filterYear != 0) {
+            data = data.filter(d => +d.Date.split('-')[0] === filterYear);
         }
 
         // Define categories for different types of injuries

@@ -42,6 +42,7 @@ function createBarChart(width, height) {
 			.attr("fill", "steelblue")
 			.on("click", function(event, d) {
 				d3.select(this).attr("fill", "red");
+				
 			})
             .on("mouseover", function(event, d) {
                 // Show tooltip on mouseover

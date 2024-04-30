@@ -1,5 +1,5 @@
 // Function to create a pie chart
-function createPieChart(width, height) {
+function createPieChart(width, height, filterYear) {
     // Define size parameters for the chart
     const size = {
         width: width,
@@ -14,6 +14,11 @@ function createPieChart(width, height) {
     // Load data from CSV file
     d3.csv("injuries_2010-2020.csv").then(function(data) {
 		console.log(data); // Log the loaded data to check if it's correct
+
+		// Filter data based on the provided year
+		if (filterYear != 0) {
+			data = data.filter(d => +d.Date.split('-')[0] === filterYear);
+		}
 
         // Define categories for different types of injuries
         const categories = {
