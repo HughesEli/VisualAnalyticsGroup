@@ -39,7 +39,10 @@ function createBarChart(width, height) {
             .attr("y", d => yScale(d.count))
             .attr("width", xScale.bandwidth())
             .attr("height", d => size.height - size.margin.bottom - yScale(d.count))
-            .attr("fill", "steelblue")
+			.attr("fill", "steelblue")
+			.on("click", function(event, d) {
+				d3.select(this).attr("fill", "red");
+			})
             .on("mouseover", function(event, d) {
                 // Show tooltip on mouseover
                 const tooltip = svg.append("text")
@@ -52,7 +55,8 @@ function createBarChart(width, height) {
             })
             .on("mouseout", function(event, d) {
                 // Remove tooltip on mouseout
-                svg.select(".tooltip").remove();
+				svg.select(".tooltip").remove();
+				d3.select(this).attr("fill", "steelblue");
             });
 
         // Draw x-axis

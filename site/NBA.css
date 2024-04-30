@@ -14,19 +14,14 @@
 
 /* Styling for the left column (line chart and bar chart) */
 .left-column {
-    width: 33.33%; /* Adjust as needed */
+    width: 40%; /* Adjust as needed */
     float: left;
 }
 
-/* Styling for the middle column (pie chart) */
-.middle-column {
-    width: 33.33%; /* Adjust as needed */
-    float: left;
-}
 
 /* Styling for the right column (treemap) */
 .right-column {
-    width: 33.33%; /* Adjust as needed */
+    width: 60%; /* Adjust as needed */
     float: left;
 }
 

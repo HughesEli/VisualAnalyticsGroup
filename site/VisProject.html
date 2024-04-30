@@ -33,31 +33,28 @@
 
 <div class="container clearfix">
 
+
     <div class="left-column">
-        <p>left-column</p>
-        <svg id="linegraph-svg" viewBox="0 0 700 500"></svg>
-        <svg id="barchart-svg" viewBox="0 0 700 500"></svg>
-        <script src="../scripts/NBA_linegraph.js"></script>
-        <script>
-            createLineGraph(700, 400); // Adjust width and height as needed 
-        </script>
+		<svg id="barchart-svg" viewBox="0 0 700 500"></svg>
         <script src="../scripts/NBA_barchart.js"></script>
         <script>
             createBarChart(700, 400); // Adjust width and height as needed
         </script>
-    </div>
 
-    <div class="middle-column">
-        <p>middle-column</p>
-        <svg id="piechart-svg" viewBox="0 0 700 500"></svg>
-        <script src="../scripts/NBA_piechart.js"></script>
+		<svg id="piechart-svg" viewBox="0 0 700 500"></svg>
+		<script src="../scripts/NBA_piechart.js"></script>
+		<script>
+			createPieChart(700, 500); // Adjust width and height as needed
+		</script>
+
+        <svg id="linegraph-svg" viewBox="0 0 700 500"></svg>
+        <script src="../scripts/NBA_linegraph.js"></script>
         <script>
-            createPieChart(700, 500); // Adjust width and height as needed
+            createLineGraph(700, 400); // Adjust width and height as needed 
         </script>
     </div>
 
     <div class="right-column">
-        <p>right-column</p>
         <div id="treemap-container"></div>
     </div>
 
